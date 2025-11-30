@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mi-trainer"
+version = "0.1.0"
+description = "CLI tool for practicing Motivational Interviewing with LLM-powered feedback"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40.0",
+    "prompt_toolkit>=3.0.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+mi-trainer = "mi_trainer.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mi_trainer"]

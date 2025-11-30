@@ -1,0 +1,41 @@
+{
+  "id": "smoking_cessation",
+  "name": "Smoking Cessation - Long-term Smoker",
+  "description": "A 45-year-old who has smoked for 25 years, facing pressure from family after a health scare",
+  "demographics": "45-year-old male, married, works as a construction supervisor, two teenage children",
+  "presenting_issue": "Smoking 1.5 packs per day for 25 years, wife insisting he quit after his father died of lung cancer",
+  "ambivalence": {
+    "change": [
+      "Scared after father's death from lung cancer last month",
+      "Daughter told him she's afraid he'll die before her wedding",
+      "Noticing more shortness of breath on the job",
+      "Spending over $400/month on cigarettes",
+      "Wife threatening to make him sleep on the couch"
+    ],
+    "status_quo": [
+      "Smoking is how I handle stress - construction is high-pressure",
+      "All my coworkers smoke, it's our social time",
+      "I've tried quitting before and failed - why would this time be different?",
+      "My grandfather smoked until 85 and was fine",
+      "I actually enjoy smoking, especially with morning coffee"
+    ]
+  },
+  "resistance_level": 3,
+  "background": "Started smoking at 20 when he began construction work. Has tried to quit twice before - once with patches (lasted 2 weeks), once cold turkey (lasted 3 days). His father, also a lifelong smoker, died of lung cancer one month ago. Wife has been increasingly vocal about quitting. He agreed to 'talk to someone' to get her off his back, but isn't sure he really wants to quit.",
+  "personality_notes": "Practical, no-nonsense communicator. Values being seen as strong and capable. Uncomfortable with emotional conversations but loves his family deeply. Tends to deflect with humor when feeling vulnerable. Respects directness but pushes back against being told what to do.",
+  "potential_change_talk_triggers": [
+    "Discussions about his children and being there for their futures",
+    "Exploring what his father's death meant to him",
+    "Talking about what kind of role model he wants to be",
+    "Discussing his own health symptoms without judgment",
+    "Exploring past quit attempts - what worked briefly"
+  ],
+  "common_sustain_talk": [
+    "I'm not my father - he smoked way more than me",
+    "You gotta die of something, right?",
+    "I've got too much stress to quit right now",
+    "I know plenty of old smokers",
+    "Quitting just makes me impossible to live with"
+  ],
+  "opening_statement": "Look, I'm only here because my wife won't stop nagging me. She thinks just because my dad... anyway, I told her I'd talk to someone, so here I am. But I'm not making any promises about anything."
+}

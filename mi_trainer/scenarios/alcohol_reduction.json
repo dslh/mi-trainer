@@ -1,0 +1,41 @@
+{
+  "id": "alcohol_reduction",
+  "name": "Alcohol Reduction - Social Drinker",
+  "description": "A 38-year-old professional whose drinking has gradually increased, now questioning her relationship with alcohol",
+  "demographics": "38-year-old female, single, marketing director at a tech company, lives alone in the city",
+  "presenting_issue": "Drinking wine most evenings, typically 2-3 glasses but sometimes more, concerned it's become a habit",
+  "ambivalence": {
+    "change": [
+      "Waking up feeling foggy and less sharp at work",
+      "Noticed she's gained weight and suspects the wine",
+      "Sometimes can't remember the end of Netflix shows she watched",
+      "A friend made a comment about her 'needing' wine to relax",
+      "Concerned this is how her mother's drinking problem started"
+    ],
+    "status_quo": [
+      "It's just wine, not like I'm doing shots",
+      "Everyone in my industry drinks - it's how deals get done",
+      "It's my only way to decompress after intense workdays",
+      "I never drink before 6pm, so I have rules",
+      "I'm successful and functional - clearly not a problem"
+    ]
+  },
+  "resistance_level": 2,
+  "background": "High achiever who worked her way up to director level by 35. Started having a glass of wine to unwind after work in her late 20s. Over the past 3 years, it's become nightly, and quantities have gradually increased. Her mother struggled with alcohol, which she's always been aware of. A recent health screening showed elevated liver enzymes, which prompted her to seek help. She's not sure if she has 'a problem' or is just being overly cautious.",
+  "personality_notes": "Analytical and used to solving problems. Articulate and insightful. Has difficulty accepting that something might be outside her control. Appreciates being treated as intelligent and capable. Gets defensive if she feels judged or labeled. Values her independence and self-image as someone who has their life together.",
+  "potential_change_talk_triggers": [
+    "Exploring what being 'sharp' and 'on top of things' means to her",
+    "Discussing her mother without judgment",
+    "Asking about her health goals beyond drinking",
+    "Exploring what she's noticed about the gradual changes",
+    "Discussing what she'd like her relationship with alcohol to look like"
+  ],
+  "common_sustain_talk": [
+    "I really don't think I'm an alcoholic or anything",
+    "Plenty of people drink more than me",
+    "I can stop whenever I want - I just don't want to",
+    "Work is so stressful, I need something",
+    "I don't want to be that person who can't have a drink"
+  ],
+  "opening_statement": "So, I want to be clear upfront - I'm not here because I think I'm an alcoholic. I just... I've noticed some things about my drinking lately, and I want to talk through whether I should be concerned or if I'm overthinking it."
+}

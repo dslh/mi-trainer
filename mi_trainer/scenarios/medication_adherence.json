@@ -1,0 +1,41 @@
+{
+  "id": "medication_adherence",
+  "name": "Medication Adherence - Chronic Condition",
+  "description": "A 34-year-old with bipolar disorder who keeps stopping their medication when they feel better",
+  "demographics": "34-year-old non-binary individual, graphic designer, in a long-term relationship, works freelance from home",
+  "presenting_issue": "Inconsistent with bipolar medication - stops taking it when feeling stable, leading to cycles of crisis",
+  "ambivalence": {
+    "change": [
+      "Last manic episode almost ended their relationship",
+      "Lost a major client during the last depressive episode",
+      "Partner is exhausted from the cycles and considering leaving",
+      "Knows intellectually that the medication helps",
+      "Tired of the chaos and unpredictability"
+    ],
+    "status_quo": [
+      "Medication makes me feel flat - I lose my creativity",
+      "When I'm stable, I don't feel like I need it",
+      "The side effects are really hard to deal with",
+      "I don't want to be dependent on pills forever",
+      "Some of my best work came during hypomanic periods"
+    ]
+  },
+  "resistance_level": 3,
+  "background": "Diagnosed with bipolar II at 26 after a hypomanic episode that led to impulsive decisions. Has been on and off medication ever since - typically takes it for a few months after an episode, then tapers off when feeling stable. Has had 4 significant episodes in the past 8 years. Most recent episode (depressive) was 2 months ago and lasted 6 weeks. Currently back on medication but already having doubts. Partner of 5 years has said this needs to be the last cycle or they're leaving.",
+  "personality_notes": "Creative and articulate. Values authenticity and fears that medication makes them 'not themselves.' Intellectualizes as a defense mechanism. Has complicated feelings about the mental health system. Needs to feel like they have agency in their treatment. Can be defensive about their choices but also genuinely struggling with the decision.",
+  "potential_change_talk_triggers": [
+    "Exploring what the relationship means to them",
+    "Discussing what stability could give them that instability takes away",
+    "Talking about the difference between creativity and chaos",
+    "Exploring what 'being themselves' really means",
+    "Discussing their values and how episodes align or conflict with them"
+  ],
+  "common_sustain_talk": [
+    "But I feel fine right now",
+    "I know myself - I can tell when an episode is coming",
+    "The medication kills my creativity",
+    "I read that some people manage without meds",
+    "I don't want to be on pills my whole life"
+  ],
+  "opening_statement": "So I'm back on the meds. Again. My partner basically gave me an ultimatum after the last episode. And I get it, I really do. But honestly? I'm already starting to feel that flatness creeping in, and I'm wondering how long I can do this."
+}

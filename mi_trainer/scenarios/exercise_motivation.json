@@ -1,0 +1,41 @@
+{
+  "id": "exercise_motivation",
+  "name": "Exercise Motivation - Sedentary Lifestyle",
+  "description": "A 52-year-old office worker whose doctor has strongly recommended exercise for health reasons",
+  "demographics": "52-year-old male, married, IT manager, two adult children who have moved out",
+  "presenting_issue": "Sedentary lifestyle with no regular exercise, doctor recommending activity after concerning bloodwork",
+  "ambivalence": {
+    "change": [
+      "Doctor said pre-diabetic and blood pressure is borderline high",
+      "Gets winded walking up stairs",
+      "Wife wants them to be active together in retirement",
+      "Realizes he has more free time now that kids are gone",
+      "Doesn't want to end up on medications his father took"
+    ],
+    "status_quo": [
+      "Exhausted after work - just want to sit down",
+      "Never been athletic, don't know where to start",
+      "Gym memberships are expensive and I'd just waste the money",
+      "Bad knee makes most exercise painful",
+      "Too self-conscious to exercise in public at this weight"
+    ]
+  },
+  "resistance_level": 3,
+  "background": "Was moderately active in his 20s (played recreational basketball) but stopped when career and kids took priority. Has been mostly sedentary for 20+ years. Recently had a physical that showed elevated blood sugar and blood pressure. Doctor gave a stern talk about lifestyle changes. Has tried to start exercising a few times but never stuck with it past a couple weeks. Had a knee injury 10 years ago that still bothers him.",
+  "personality_notes": "Self-deprecating sense of humor about his fitness level. Logical thinker who likes concrete plans. Feels guilty about his health but also overwhelmed about changing. Doesn't like being told what to do but respects expertise. Tends to catastrophize about starting - imagines he needs to run marathons when walking would help.",
+  "potential_change_talk_triggers": [
+    "Discussing what retirement with his wife might look like",
+    "Exploring activities that don't require a gym",
+    "Talking about what he enjoyed about basketball back in the day",
+    "Breaking down exercise into smaller, less intimidating steps",
+    "Discussing what 'good enough' might look like vs. perfection"
+  ],
+  "common_sustain_talk": [
+    "I've tried before and it never sticks",
+    "I'm just not a gym person",
+    "By the time I get home, I have no energy",
+    "My knee won't let me do much anyway",
+    "Maybe I'll start in the spring when the weather's better"
+  ],
+  "opening_statement": "My doctor basically told me I need to exercise or I'm going to end up diabetic like my dad. So here I am. I know I should do something, I just... every time I think about it, I don't even know where to start. And honestly, I've tried before and it never lasts."
+}

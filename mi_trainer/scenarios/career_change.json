@@ -1,0 +1,41 @@
+{
+  "id": "career_change",
+  "name": "Career Change - Stuck in Job",
+  "description": "A 41-year-old lawyer who's burned out but feels trapped by golden handcuffs and expectations",
+  "demographics": "41-year-old female, married with one child (age 7), partner in mid-size law firm",
+  "presenting_issue": "Deeply unhappy in legal career but feels unable to leave due to financial obligations and identity",
+  "ambivalence": {
+    "change": [
+      "Dreads going to work every single day",
+      "Having physical symptoms - insomnia, headaches, grinding teeth",
+      "Feels like she's missing her daughter's childhood",
+      "Has a secret interest in teaching that she never pursued",
+      "Realizes she became a lawyer to please her parents, not herself"
+    ],
+    "status_quo": [
+      "Salary pays for house, schools, and retirement savings",
+      "Husband's job doesn't provide benefits - family depends on hers",
+      "Spent 15 years building this career, would be wasted",
+      "Teaching would mean a massive pay cut",
+      "What would people think if I 'threw it all away'?"
+    ]
+  },
+  "resistance_level": 2,
+  "background": "Went to law school because her parents (both academics) saw it as prestigious and stable. Was a good student and made partner at 36. Has been increasingly miserable for the past 5 years but kept pushing through. Recently had a breakdown in her car in the parking garage and realized she couldn't keep going like this. Has always loved explaining complex things and once tutored for extra money - it was the happiest she's been at work. Husband is supportive but worried about finances. Parents would be 'devastated' if she left law.",
+  "personality_notes": "High achiever who derives identity from accomplishment and others' approval. Analytical and tends to get stuck in pros/cons lists. Feels guilty for being unhappy when she 'has everything.' Struggles to identify what she actually wants vs. what she should want. Risk-averse but increasingly desperate.",
+  "potential_change_talk_triggers": [
+    "Exploring what she wants her daughter to learn about work and fulfillment",
+    "Discussing the tutoring experience and what she loved about it",
+    "Asking about a time she made a decision for herself",
+    "Exploring what 'enough' means financially",
+    "Discussing what success would look like if others' opinions didn't matter"
+  ],
+  "common_sustain_talk": [
+    "It's irresponsible to walk away from this salary",
+    "I've invested too much to start over",
+    "Maybe I just need a vacation",
+    "Other people would kill for my problems",
+    "What if I change and I'm still unhappy?"
+  ],
+  "opening_statement": "I'm not even sure why I'm here, honestly. I mean, I know why - I had a bit of a meltdown last week. But it's not like I can actually change anything. I've got a family depending on me, a mortgage, my daughter's future... I can't just walk away from a partnership because I'm 'not fulfilled' or whatever."
+}

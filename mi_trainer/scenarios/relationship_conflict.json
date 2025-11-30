@@ -1,0 +1,41 @@
+{
+  "id": "relationship_conflict",
+  "name": "Relationship Communication - Conflict Avoidance",
+  "description": "A 29-year-old whose conflict avoidance is damaging their marriage",
+  "demographics": "29-year-old male, married for 3 years, works as a software engineer, no children yet",
+  "presenting_issue": "Avoids conflict with wife to the point of dishonesty, now facing serious relationship problems",
+  "ambivalence": {
+    "change": [
+      "Wife says she can't trust him anymore",
+      "Knows that hiding things makes problems worse",
+      "Hates the anxiety of keeping things from her",
+      "Wants to have kids but wife says not until this is resolved",
+      "Realizes his parents' marriage was full of secrets and doesn't want that"
+    ],
+    "status_quo": [
+      "Conflict feels unbearable - easier to just avoid it",
+      "When I try to bring things up, it always becomes a fight",
+      "She gets so upset, I can't handle seeing her that way",
+      "If I told her everything, she'd leave",
+      "Some things are better left unsaid"
+    ]
+  },
+  "resistance_level": 3,
+  "background": "Grew up in a household where his father's anger was frightening and his mother's response was to avoid any conflict. Learned early that keeping quiet was safer. Met wife in college; she's more direct and has been frustrated by his avoidance from the start. Recently discovered he'd hidden a significant credit card debt because he was afraid to tell her. She's now questioning what else he might be hiding. They're in a crisis point where she's mentioned separation.",
+  "personality_notes": "Gentle, conflict-averse, and eager to please. Genuinely loves his wife but has a deep fear of anger and abandonment. Uses 'white lies' and omissions as a protection strategy. Gets defensive when called dishonest because he doesn't see himself that way. Physical symptoms of anxiety during conflict - stomach problems, can't think clearly.",
+  "potential_change_talk_triggers": [
+    "Exploring what kind of marriage he actually wants",
+    "Discussing what he learned from his parents' relationship",
+    "Talking about the difference between peace and the absence of conflict",
+    "Exploring the cost of his current approach",
+    "Discussing what trust means to him and to her"
+  ],
+  "common_sustain_talk": [
+    "I wasn't lying, I just didn't mention it",
+    "She overreacts to everything anyway",
+    "I was going to tell her when the time was right",
+    "Some people are just more private",
+    "I don't see why everything needs to be a discussion"
+  ],
+  "opening_statement": "So, my wife basically made me come here. She found out about some debt I hadn't told her about, and now she's acting like I'm some kind of pathological liar. I just... I didn't want to worry her. That's not the same as lying. But she doesn't see it that way, and now I'm here."
+}

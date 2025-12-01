@@ -9,7 +9,7 @@ APP_STYLE = Style.from_dict({
     "conversation.client": "#e94560 bold",
     "conversation.client-label": "#e94560 bold",
     "conversation.user": "#0f3460",
-    "conversation.user-label": "#16213e bold",
+    "conversation.user-label": "#00ff88 bold",
     "conversation.message": "#eaeaea",
     "conversation.branch-indicator": "#ffc107 italic",
 

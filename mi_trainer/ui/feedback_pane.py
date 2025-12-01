@@ -1,5 +1,8 @@
 """Feedback pane displaying coach analysis."""
 
+import shutil
+import textwrap
+
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.layout import ScrollablePane
 from prompt_toolkit.layout.controls import FormattedTextControl
@@ -15,15 +18,38 @@ class FeedbackPane:
         self._content: list[tuple[str, str]] = []
         self._streaming_text = ""
         self._is_streaming = False
+        self._wrap_width = 35
         self.control = FormattedTextControl(
             text=self._get_formatted_text,
             focusable=False,
         )
         self.window = Window(
             content=self.control,
-            wrap_lines=True,
+            wrap_lines=False,  # We handle wrapping ourselves
         )
         self.container = ScrollablePane(self.window)
+
+    def _wrap_text(self, text: str, indent: str = "") -> str:
+        """Wrap text at word boundaries."""
+        try:
+            term_width = shutil.get_terminal_size().columns
+            self._wrap_width = max(25, int(term_width * 0.30) - 5)
+        except Exception:
+            self._wrap_width = 35
+
+        paragraphs = text.split('\n')
+        wrapped = []
+        for para in paragraphs:
+            if para.strip():
+                wrapped.append(textwrap.fill(
+                    para,
+                    width=self._wrap_width,
+                    initial_indent=indent,
+                    subsequent_indent=indent + "  "
+                ))
+            else:
+                wrapped.append('')
+        return '\n'.join(wrapped)
 
     def _get_formatted_text(self) -> FormattedText:
         """Generate the formatted text for display."""
@@ -49,22 +75,22 @@ class FeedbackPane:
 
         # MI-consistent (good)
         for item in feedback.mi_consistent:
-            self._content.append(("class:feedback.good", "  + "))
-            self._content.append(("class:feedback.note", f"{item}\n"))
+            self._content.append(("class:feedback.good", "+ "))
+            self._content.append(("class:feedback.note", f"{self._wrap_text(item)}\n"))
 
         # MI-inconsistent (issues)
         for item in feedback.mi_inconsistent:
-            self._content.append(("class:feedback.bad", "  - "))
-            self._content.append(("class:feedback.note", f"{item}\n"))
+            self._content.append(("class:feedback.bad", "- "))
+            self._content.append(("class:feedback.note", f"{self._wrap_text(item)}\n"))
 
         # Suggestions
         for item in feedback.suggestions:
-            self._content.append(("class:feedback.suggestion", "  > "))
-            self._content.append(("class:feedback.note", f"{item}\n"))
+            self._content.append(("class:feedback.suggestion", "> "))
+            self._content.append(("class:feedback.note", f"{self._wrap_text(item)}\n"))
 
         # Overall note
         if feedback.overall_note:
-            self._content.append(("class:feedback.note", f"\n{feedback.overall_note}\n"))
+            self._content.append(("class:feedback.note", f"\n{self._wrap_text(feedback.overall_note)}\n"))
 
     def start_streaming(self) -> None:
         """Start streaming feedback."""
@@ -85,11 +111,11 @@ class FeedbackPane:
 
     def show_info(self, message: str) -> None:
         """Show an informational message."""
-        self._content.append(("class:feedback.note", f"\n{message}\n"))
+        self._content.append(("class:feedback.note", f"\n{self._wrap_text(message)}\n"))
 
     def show_error(self, message: str) -> None:
         """Show an error message."""
-        self._content.append(("class:feedback.bad", f"\nError: {message}\n"))
+        self._content.append(("class:feedback.bad", f"\nError: {self._wrap_text(message)}\n"))
 
     def clear(self) -> None:
         """Clear the feedback display."""

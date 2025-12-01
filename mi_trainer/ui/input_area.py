@@ -44,7 +44,9 @@ class InputArea:
         text = buffer.text.strip()
         if text and self.on_submit:
             self.on_submit(text)
-        return True  # Clear the buffer
+        # Clear the buffer for next input
+        buffer.reset()
+        return False  # Don't add to history twice (reset already handles it)
 
     def get_prompt(self) -> str:
         """Get the current prompt text."""

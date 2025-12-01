@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Optional
 
 from prompt_toolkit import Application
+from prompt_toolkit.enums import EditingMode
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.key_binding.bindings.focus import focus_next, focus_previous
 from prompt_toolkit.patch_stdout import patch_stdout
@@ -37,12 +38,12 @@ class MITrainerApp:
             layout=self.layout.layout,
             key_bindings=self.kb,
             style=self.layout.get_style(),
+            editing_mode=EditingMode.VI,
             full_screen=True,
             mouse_support=True,
         )
 
         # State
-        self._pending_input: Optional[str] = None
         self._running = True
 
     def _create_key_bindings(self) -> KeyBindings:
@@ -66,7 +67,8 @@ class MITrainerApp:
 
     def _handle_input(self, text: str) -> None:
         """Handle user input (called from input area)."""
-        self._pending_input = text
+        # Schedule async processing - this is called from sync context
+        asyncio.create_task(self._process_input(text))
 
     async def run(self, scenario: Optional[Scenario] = None, load_path: Optional[str] = None) -> None:
         """Run the application."""
@@ -89,19 +91,8 @@ class MITrainerApp:
             if self.session.conversation.is_empty():
                 await self._get_client_opening()
 
-        # Main loop
-        with patch_stdout():
-            while self._running:
-                # Run the app for one iteration
-                try:
-                    await self.app.run_async()
-                except EOFError:
-                    break
-
-                # Process any pending input
-                if self._pending_input:
-                    await self._process_input(self._pending_input)
-                    self._pending_input = None
+        # Run the application
+        await self.app.run_async()
 
     async def _show_scenario_selection(self) -> None:
         """Show scenario selection interface."""

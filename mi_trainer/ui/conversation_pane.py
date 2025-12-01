@@ -1,5 +1,8 @@
 """Conversation pane displaying the dialogue."""
 
+import shutil
+import textwrap
+
 from prompt_toolkit.formatted_text import FormattedText, HTML
 from prompt_toolkit.layout import ScrollablePane
 from prompt_toolkit.layout.controls import FormattedTextControl
@@ -15,28 +18,49 @@ class ConversationPane:
         self._content: list[tuple[str, str]] = []
         self._streaming_text = ""
         self._streaming_role = ""
+        self._wrap_width = 70  # Will be updated dynamically
         self.control = FormattedTextControl(
             text=self._get_formatted_text,
             focusable=False,
         )
         self.window = Window(
             content=self.control,
-            wrap_lines=True,
+            wrap_lines=False,  # We handle wrapping ourselves
         )
         self.container = ScrollablePane(self.window)
+
+    def _wrap_text(self, text: str) -> str:
+        """Wrap text at word boundaries."""
+        # Get terminal width and use ~65% for conversation pane
+        try:
+            term_width = shutil.get_terminal_size().columns
+            self._wrap_width = max(40, int(term_width * 0.65) - 10)
+        except Exception:
+            self._wrap_width = 70
+
+        # Wrap each paragraph separately to preserve intentional line breaks
+        paragraphs = text.split('\n')
+        wrapped = []
+        for para in paragraphs:
+            if para.strip():
+                wrapped.append(textwrap.fill(para, width=self._wrap_width))
+            else:
+                wrapped.append('')
+        return '\n'.join(wrapped)
 
     def _get_formatted_text(self) -> FormattedText:
         """Generate the formatted text for display."""
         result = list(self._content)
 
-        # Add streaming content if present
+        # Add streaming content if present (wrap it too)
         if self._streaming_text:
+            wrapped = self._wrap_text(self._streaming_text)
             if self._streaming_role == "client":
                 result.append(("class:conversation.client-label", "\nClient: "))
-                result.append(("class:conversation.message", self._streaming_text))
+                result.append(("class:conversation.message", wrapped))
             else:
                 result.append(("class:conversation.user-label", "\nYou: "))
-                result.append(("class:conversation.message", self._streaming_text))
+                result.append(("class:conversation.message", wrapped))
 
         if not result:
             result.append(("class:conversation.message", "Start the conversation by typing below..."))
@@ -63,7 +87,7 @@ class ConversationPane:
         else:
             self._content.append(("class:conversation.user-label", "\nYou: "))
 
-        self._content.append(("class:conversation.message", node.content))
+        self._content.append(("class:conversation.message", self._wrap_text(node.content)))
         self._content.append(("", "\n"))
 
     def add_message(self, role: str, content: str) -> None:
@@ -73,7 +97,7 @@ class ConversationPane:
         else:
             self._content.append(("class:conversation.user-label", "\nYou: "))
 
-        self._content.append(("class:conversation.message", content))
+        self._content.append(("class:conversation.message", self._wrap_text(content)))
         self._content.append(("", "\n"))
 
     def start_streaming(self, role: str) -> None:

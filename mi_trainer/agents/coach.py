@@ -87,3 +87,31 @@ Please analyze this practitioner response and provide feedback in the specified 
             return CoachFeedback(
                 overall_note=f"Unable to parse feedback: {response[:200]}..."
             )
+
+    async def get_hint(self, conversation: list[dict[str, str]]) -> str:
+        """Get a hint about what technique to try next."""
+        # Format conversation history
+        history_text = ""
+        for msg in conversation:
+            role_label = "Practitioner" if msg["role"] == "user" else "Client"
+            history_text += f"{role_label}: {msg['content']}\n\n"
+
+        hint_prompt = """You are an MI coach. Based on the conversation so far, suggest what technique or approach the practitioner might try next.
+
+Focus on:
+- Which MI technique would be most helpful here (open question, reflection, affirmation, summary, etc.)
+- Why this technique fits the current moment
+- What aspect of what the client said to focus on
+
+Do NOT provide exact words to say. Give guidance on the approach, not a script.
+
+Keep your response to 2-3 sentences."""
+
+        messages = [
+            {
+                "role": "user",
+                "content": f"## Conversation So Far\n\n{history_text}\n\nWhat technique should the practitioner consider using next?",
+            }
+        ]
+
+        return await self.get_response(hint_prompt, messages)

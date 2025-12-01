@@ -170,6 +170,7 @@ class MITrainerApp:
 
         handlers = {
             "help": self._cmd_help,
+            "hint": self._cmd_hint,
             "quit": self._cmd_quit,
             "save": self._cmd_save,
             "load": self._cmd_load,
@@ -266,6 +267,7 @@ class MITrainerApp:
         """Show help information."""
         help_text = """Commands:
   /help          - Show this help
+  /hint          - Get technique suggestion
   /quit          - Exit (prompts to save)
   /save          - Save current session
   /load <name>   - Load a saved session
@@ -275,6 +277,22 @@ class MITrainerApp:
   /branches      - Show branches at current point
   /goto <id>     - Jump to specific node"""
         self.layout.feedback_pane.show_info(help_text)
+
+    async def _cmd_hint(self, args: str) -> None:
+        """Get a hint about what technique to try next."""
+        if not self.session or self.session.conversation.is_empty():
+            self.layout.feedback_pane.show_error("No conversation yet. Start talking first!")
+            return
+
+        self.layout.feedback_pane.show_info("Thinking...")
+        self.layout.set_status("Getting hint...")
+        self.app.invalidate()
+
+        conversation = self.session.conversation.get_conversation_for_llm()
+        hint = await self.coach_agent.get_hint(conversation)
+
+        self.layout.feedback_pane.show_info(f"Hint: {hint}")
+        self.layout.set_status(f"Scenario: {self.session.scenario.name} | /help for commands")
 
     async def _cmd_quit(self, args: str) -> None:
         """Quit the application."""

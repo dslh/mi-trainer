@@ -63,6 +63,32 @@ class MITrainerApp:
             if self.session:
                 asyncio.create_task(self._save_session())
 
+        # Scroll conversation pane
+        @kb.add("pageup")
+        @kb.add("c-up")
+        def scroll_conv_up(event):
+            """Scroll conversation pane up."""
+            self.layout.conversation_pane.container.vertical_scroll -= 3
+
+        @kb.add("pagedown")
+        @kb.add("c-down")
+        def scroll_conv_down(event):
+            """Scroll conversation pane down."""
+            self.layout.conversation_pane.container.vertical_scroll += 3
+
+        # Scroll feedback pane (with shift modifier)
+        @kb.add("s-pageup")
+        @kb.add("s-up")
+        def scroll_feedback_up(event):
+            """Scroll feedback pane up."""
+            self.layout.feedback_pane.container.vertical_scroll -= 3
+
+        @kb.add("s-pagedown")
+        @kb.add("s-down")
+        def scroll_feedback_down(event):
+            """Scroll feedback pane down."""
+            self.layout.feedback_pane.container.vertical_scroll += 3
+
         return kb
 
     def _handle_input(self, text: str) -> None:

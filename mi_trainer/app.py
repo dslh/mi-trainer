@@ -171,6 +171,7 @@ class MITrainerApp:
         handlers = {
             "help": self._cmd_help,
             "hint": self._cmd_hint,
+            "debrief": self._cmd_debrief,
             "quit": self._cmd_quit,
             "save": self._cmd_save,
             "load": self._cmd_load,
@@ -268,14 +269,15 @@ class MITrainerApp:
         help_text = """Commands:
   /help          - Show this help
   /hint          - Get technique suggestion
+  /debrief       - Full session analysis
   /quit          - Exit (prompts to save)
   /save          - Save current session
   /load <name>   - Load a saved session
   /scenario [n]  - List or select scenario
   /new <desc>    - Generate new scenario
   /rewind [n]    - Go back n messages
-  /branches      - Show branches at current point
-  /goto <id>     - Jump to specific node"""
+  /branches      - Show branches
+  /goto <id>     - Jump to node"""
         self.layout.feedback_pane.show_info(help_text)
 
     async def _cmd_hint(self, args: str) -> None:
@@ -292,6 +294,29 @@ class MITrainerApp:
         hint = await self.coach_agent.get_hint(conversation)
 
         self.layout.feedback_pane.show_info(f"Hint: {hint}")
+        self.layout.set_status(f"Scenario: {self.session.scenario.name} | /help for commands")
+
+    async def _cmd_debrief(self, args: str) -> None:
+        """Get a full session debrief."""
+        if not self.session or self.session.conversation.is_empty():
+            self.layout.feedback_pane.show_error("No conversation to debrief yet!")
+            return
+
+        # Check if there's enough conversation to debrief
+        conversation = self.session.conversation.get_conversation_for_llm()
+        if len(conversation) < 4:
+            self.layout.feedback_pane.show_error("Have a longer conversation first (at least 2 exchanges).")
+            return
+
+        self.layout.feedback_pane.clear()
+        self.layout.feedback_pane.show_info("Analyzing session... (this may take a moment)")
+        self.layout.set_status("Generating debrief...")
+        self.app.invalidate()
+
+        debrief = await self.coach_agent.get_debrief(conversation)
+
+        self.layout.feedback_pane.clear()
+        self.layout.feedback_pane.show_info(debrief)
         self.layout.set_status(f"Scenario: {self.session.scenario.name} | /help for commands")
 
     async def _cmd_quit(self, args: str) -> None:

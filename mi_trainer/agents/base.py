@@ -39,11 +39,12 @@ class BaseAgent:
         self,
         system_prompt: str,
         messages: list[dict[str, str]],
+        max_tokens: int = 1024,
     ) -> str:
         """Get a complete response from the model."""
         response = await self.client.messages.create(
             model=self.model,
-            max_tokens=1024,
+            max_tokens=max_tokens,
             system=system_prompt,
             messages=messages,
         )

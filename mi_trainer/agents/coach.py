@@ -115,3 +115,56 @@ Keep your response to 2-3 sentences."""
         ]
 
         return await self.get_response(hint_prompt, messages)
+
+    async def get_debrief(self, conversation: list[dict[str, str]]) -> str:
+        """Get a full session debrief with analysis and feedback."""
+        # Format conversation history
+        history_text = ""
+        for msg in conversation:
+            role_label = "Practitioner" if msg["role"] == "user" else "Client"
+            history_text += f"{role_label}: {msg['content']}\n\n"
+
+        debrief_prompt = """You are an expert MI coach providing a session debrief. Analyze the full conversation and provide comprehensive feedback.
+
+Structure your response as follows:
+
+## Overall Assessment
+A 2-3 sentence summary of how the session went overall.
+
+## MI Adherence Score: X/10
+Brief justification for the score.
+
+## Techniques Used
+Count and list the MI techniques observed:
+- Open questions: [count]
+- Closed questions: [count]
+- Simple reflections: [count]
+- Complex reflections: [count]
+- Affirmations: [count]
+- Summaries: [count]
+
+## Strengths
+2-3 specific things the practitioner did well, with examples from the conversation.
+
+## Areas for Growth
+2-3 specific areas to work on, with concrete suggestions. Reference specific moments where a different approach might have worked better.
+
+## Client Movement
+Analyze how the client's language shifted during the session:
+- Did change talk increase or decrease?
+- Did sustain talk increase or decrease?
+- What seemed to influence these shifts?
+
+## Key Takeaway
+One main thing to focus on for next time.
+
+Be specific, educational, and encouraging. Reference actual quotes from the conversation."""
+
+        messages = [
+            {
+                "role": "user",
+                "content": f"## Full Session Transcript\n\n{history_text}\n\nPlease provide a comprehensive session debrief.",
+            }
+        ]
+
+        return await self.get_response(debrief_prompt, messages, max_tokens=2048)

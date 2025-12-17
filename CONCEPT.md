@@ -173,6 +173,9 @@ At the end of a session, a comprehensive debrief covers both sides of the conver
 - Missed opportunities
 - Takeaways for future practice
 
+**Recommended Drills:**
+Based on the session analysis, the debrief suggests specific technique drills to strengthen areas that need development. For example, if the session showed mostly simple reflections, it might recommend the Reflections drill with a focus on complex reflections. This creates a natural path from full practice sessions to targeted skill work.
+
 ### Progress Tracking
 
 Skill development is tracked across sessions to support long-term learning:

@@ -31,7 +31,7 @@ A practitioner can sign in, select a scenario, practice MI with a simulated clie
 - End session button
 
 ### Agents
-- **Client Agent** - Responds in character based on scenario, reacts to MI quality
+- **Client Agent** - Responds in character based on scenario, reacts to MI quality. Can signal readiness to end conversation (natural conclusion or disengagement), surfaced as a prompt to the user who decides whether to continue or end.
 - **Technique Analyst** - Analyzes each user message, provides feedback on techniques used, MI-consistent/inconsistent behaviors, suggestions
 
 ### Session Persistence
@@ -108,7 +108,7 @@ Dashboard
 **POST /api/chat**
 - Streams client response
 - Input: session_id, user message
-- Output: SSE stream of client response chunks
+- Output: SSE stream of client response chunks, may include `signal_ending` tool call
 
 **POST /api/analyze**
 - Streams technique analysis

@@ -1,0 +1,46 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eaeaea;
+  background: white;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  margin-right: 3rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.navLink {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.navLink:hover {
+  color: #333;
+}
+
+.user {
+  margin-left: auto;
+}
+
+.main {
+  flex: 1;
+  background: #fafafa;
+}

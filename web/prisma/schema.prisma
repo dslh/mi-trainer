@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Scenario {
+  id                       String   @id @default(cuid())
+  slug                     String   @unique
+  name                     String
+  description              String
+  demographics             String
+  presentingIssue          String   @map("presenting_issue")
+  ambivalence              Json     // { change: string[], statusQuo: string[] }
+  resistanceLevel          Int      @map("resistance_level")
+  background               String
+  personalityNotes         String   @map("personality_notes")
+  changeTalkTriggers       Json     @map("change_talk_triggers") // string[]
+  sustainTalk              Json     @map("sustain_talk") // string[]
+  openingStatement         String   @map("opening_statement")
+  isBuiltin                Boolean  @default(true) @map("is_builtin")
+  createdAt                DateTime @default(now()) @map("created_at")
+
+  sessions Session[]
+
+  @@map("scenarios")
+}
+
+model Session {
+  id          String        @id @default(cuid())
+  userId      String        @map("user_id")
+  scenarioId  String        @map("scenario_id")
+  status      SessionStatus @default(ACTIVE)
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  scenario Scenario  @relation(fields: [scenarioId], references: [id])
+  messages Message[]
+  debrief  Debrief?
+
+  @@map("sessions")
+}
+
+enum SessionStatus {
+  ACTIVE
+  COMPLETED
+}
+
+model Message {
+  id                String   @id @default(cuid())
+  sessionId         String   @map("session_id")
+  role              MessageRole
+  content           String
+  techniqueFeedback Json?    @map("technique_feedback") // CoachFeedback structure
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+enum MessageRole {
+  USER
+  CLIENT
+}
+
+model Debrief {
+  id        String   @id @default(cuid())
+  sessionId String   @unique @map("session_id")
+  content   String   // LLM-generated debrief text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("debriefs")
+}

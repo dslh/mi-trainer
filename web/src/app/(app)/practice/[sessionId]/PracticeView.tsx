@@ -110,32 +110,15 @@ export function PracticeView({ sessionId, scenario, initialMessages }: Props) {
           }
         }
 
-        // Parse the streamed response - extract JSON from the stream
-        // The AI SDK streams data in a specific format
-        const lines = result.split("\n");
-        let jsonContent = "";
-        for (const line of lines) {
-          if (line.startsWith("0:")) {
-            // Text content
-            const content = line.slice(2);
-            try {
-              jsonContent += JSON.parse(content);
-            } catch {
-              // Not JSON, skip
-            }
-          }
-        }
-
-        // Try to parse as feedback JSON
+        // Parse the streamed response - toTextStreamResponse returns plain text
         try {
-          // Find JSON in the content
-          const jsonMatch = jsonContent.match(/\{[\s\S]*\}/);
+          const jsonMatch = result.match(/\{[\s\S]*\}/);
           if (jsonMatch) {
             const parsed = JSON.parse(jsonMatch[0]);
             setFeedback(parsed);
           }
         } catch {
-          console.error("Failed to parse feedback");
+          console.error("Failed to parse feedback:", result);
         }
       }
     } catch (error) {
